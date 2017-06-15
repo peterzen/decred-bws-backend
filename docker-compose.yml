@@ -1,0 +1,61 @@
+version: '2.1'
+services:
+  # copay:
+  #   build: copay
+  #   ports:
+  #    - "5000:5000"
+  #   volumes:
+  #    - .:/code
+  dcrd:
+    build: dcrd
+    image: peterzen/dcrd
+    ports:
+      - "19109:19109"
+      - "19108:19108"
+    volumes:
+      - ./data/dcrd:/root/.dcrd/data
+    healthcheck:
+        test: ["CMD", "curl", "-u", "user:pass", "-f", "http://localhost:19109"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+  insight:
+    build: insight-api
+    image: peterzen/insight
+    depends_on:
+      dcrd:
+        condition: service_healthy
+    restart: always
+    environment:
+      - LOGGER_LEVEL=debug
+      - BITCOIND_USER=user
+      - BITCOIND_PASS=pass
+      - BITCOIND_HOST=dcrd
+      - INSIGHT_NETWORK=dcrdtestnet
+    ports:
+      - "3004:3004"
+    volumes:
+      - ./data/insight:/root/.insight
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:3004"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+  mongodb:
+    image: "tutum/mongodb"
+    environment:
+      - AUTH=no
+  bws:
+    build: bitcore-wallet-service
+    image: peterzen/bws
+    restart: always
+    ports:
+      - "3232:3232"
+    depends_on:
+      mongodb:
+        condition: service_started
+      insight:
+        condition: service_healthy
+
+# volumes:
+    # dcrd_data:

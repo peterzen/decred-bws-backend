@@ -1,0 +1,7 @@
+[submodule "insight-api"]
+	path = insight-api
+	url = https://github.com/peterzen/insight-api
+	branch = docker-deployment-setup
+[submodule "bitcore-wallet-service"]
+	path = bitcore-wallet-service
+	url = https://github.com/peterzen/bitcore-wallet-service
