@@ -1,0 +1,61 @@
+{
+  "Services": {
+    "bws": {
+      "Image": "peterzen/bws@sha256:800d972f5865281b4e76cd1d753391a54df85925069597a5310c9650e3f5d35e", 
+      "Networks": [
+        "default"
+      ], 
+      "Ports": [
+        {
+          "Port": 3232, 
+          "Protocol": "tcp"
+        }
+      ]
+    }, 
+    "dcrd": {
+      "Image": "peterzen/dcrd@sha256:eef60a3453ae2c5e898d119cbd5d1a4a0938f0b13eecbeef41e2c0fb888b14bf", 
+      "Networks": [
+        "default"
+      ], 
+      "Ports": [
+        {
+          "Port": 19109, 
+          "Protocol": "tcp"
+        }, 
+        {
+          "Port": 19108, 
+          "Protocol": "tcp"
+        }
+      ]
+    }, 
+    "insight": {
+      "Env": [
+        "BITCOIND_HOST=dcrd", 
+        "LOGGER_LEVEL=debug", 
+        "INSIGHT_NETWORK=dcrdtestnet", 
+        "BITCOIND_USER=user", 
+        "BITCOIND_PASS=pass"
+      ], 
+      "Image": "peterzen/insight@sha256:499b82239ea209a84dd2c1196646565a00144436038472e6f2ed10743991f077", 
+      "Networks": [
+        "default"
+      ], 
+      "Ports": [
+        {
+          "Port": 3004, 
+          "Protocol": "tcp"
+        }
+      ]
+    }, 
+    "mongodb": {
+      "Env": [
+        "AUTH=no"
+      ], 
+      "Image": "tutum/mongodb@sha256:157ed000a8b751b700d3ba4118e52300a52f1dc32d73d372c3633c370a281dc1", 
+      "Networks": [
+        "default"
+      ]
+    }
+  }, 
+  "Version": "0.1"
+}
