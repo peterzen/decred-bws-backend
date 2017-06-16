@@ -37,3 +37,5 @@ To run:
 ```
 
 Under the hood, this runs `docker-compose up` to launch the stack.
+
+Once `dcrd` and `insight-api` are synced up, the API will be exposed on port 3232: `http://<IP address>:3232`.  An `nginx` proxy is not included in the docker setup.
