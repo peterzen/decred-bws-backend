@@ -1,7 +1,7 @@
 
 # Dockerized bitcore-wallet-service deployment
 
-This repository contains configuration for deploying [BWS](https://github.com/decred/bitcore-wallet-service) and all its dependencies in a Docker environment, using `docket-compose`.  The configuration is in `docket-compose.yml`.
+This repository contains configuration for deploying [BWS](https://github.com/decred/bitcore-wallet-service) and all its dependencies in a Docker environment, using `docker-compose`.  The configuration is in `docket-compose.yml`.
 
 ## Components
 
