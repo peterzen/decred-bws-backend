@@ -1,7 +1,7 @@
 FROM centos:latest
 
 LABEL description="dcrd"
-LABEL version="1.0"
+LABEL version="1.0.3"
 LABEL maintainer "peter@prioritylane.com"
 
 ENV DCRD_VERSION=v1.0.3

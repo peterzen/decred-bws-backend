@@ -49,6 +49,8 @@ services:
     build: bitcore-wallet-service
     image: peterzen/bws
     restart: always
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/bws
     ports:
       - "3232:3232"
     depends_on:
