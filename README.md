@@ -13,6 +13,7 @@ This repository contains configuration for deploying [BWS](https://github.com/de
 ## Prerequisites
 
  - Running [Docker](https://www.docker.com/) node
+ - [docker-compose](https://docs.docker.com/compose/install/) >= 1.14.0
  - If the node you're running is on a remote host:
  ```
  export DOCKER_HOST=tcp://<IP address>:2375
